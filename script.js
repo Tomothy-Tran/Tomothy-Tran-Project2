@@ -7,6 +7,7 @@ $(function () { // Makes sure that your function is called once all the DOM elem
   $('.treat-button').click(clickedTreatButton);
   $('.play-button').click(clickedPlayButton);
   $('.exercise-button').click(clickedExerciseButton);
+  $('.evolve-button').click(clickedEvolveButton);
 
 
 
@@ -50,6 +51,11 @@ function clickedExerciseButton() {
   checkAndUpdatePetInfoInHtml();
 }
 
+function clickedEvolveButton() {
+  document.getElementById("petimageid").src="images/Bob.webp";
+
+}
+
 function checkAndUpdatePetInfoInHtml() {
   checkWeightAndHappinessBeforeUpdating();
   updatePetInfoInHtml();
@@ -70,4 +76,10 @@ function updatePetInfoInHtml() {
   $('.weight').text(pet_info['weight']);
   $('.happiness').text(pet_info['happiness']);
   $('.power').text(pet_info['power']);
+  var weightmetervalue = document.getElementById('weightmeter');
+  weightmetervalue.value = pet_info.weight;
+  var happinessmetervalue = document.getElementById('happinessmeter');
+  happinessmetervalue.value = pet_info.happiness;
+  var powermetervalue = document.getElementById('powermeter');
+  powermetervalue.value = pet_info.power;
 }

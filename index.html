@@ -1,52 +1,60 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Your Giga Pet</title>
-    <meta name="description" content="A cool thing made with Glitch">
-    <link id="favicon" rel="icon" href="https://glitch.com/edit/favicon-app.ico" type="image/x-icon">
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script src="script.js" defer></script>
-    <link rel="stylesheet" href="style.css">
-  </head>
-  <body>
-    <header>
-      <h1>
-        This is your Giga Pet
-      </h1>
-    </header>
 
-    <main>
-      <section class="pet-image-container">
-         <!-- Replace pet image with your own pet image -->
-        <img class="pet-image" src= "images/HedgeHogwithchia-HI_06db86b9-c161-4491-bb31-731b74fb11e8_1024x1024@2x.webp">
-      </section>
-      <section class="dashboard">
-        <div>Name: <strong><span class="name"></span></strong></div>
-        <div>Weight: <strong><span class="weight"></span> pounds</strong></div>
-        <div>Happiness: <strong><span class="happiness"></span> tail wags (per min)</strong></div>
-        <div>Power level: <strong><span class="power"></span></strong></div>
-        <div class="button-container">
-          <button class="treat-button">
-            Treat
-          </button>
-          <button class="play-button">
-            Play
-          </button>
-          <button class="exercise-button">
-            Exercise
-          </button>
-          <button class="evolve-button">
-            Evolve
-          </button>
-        </div>
-      </section>
-    </main>
+<head>
+  <title>Your Giga Pet</title>
+  <meta name="description" content="A cool thing made with Glitch">
+  <link id="favicon" rel="icon" href="https://glitch.com/edit/favicon-app.ico" type="image/x-icon">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="script.js" defer></script>
+  <link rel="stylesheet" href="style.css">
+</head>
 
-    <!-- Your web-app is https, so your scripts need to be too -->
-    <script src="https://code.jquery.com/jquery-2.2.1.min.js"
-            integrity="sha256-gvQgAFzTH6trSrAWoH1iPo9Xc96QxSZ3feW6kem+O00="
-            crossorigin="anonymous"></script>
-  </body>
+<body>
+  <header>
+    <h1>
+      This is your Giga Pet
+    </h1>
+  </header>
+
+  <main>
+    <section class="pet-image-container">
+      <!-- Replace pet image with your own pet image -->
+      <img id = "petimageid" class="pet-image" src="images/Hedgehog.webp">
+    </section>
+    <section class="dashboard">
+      <div>Name: <strong><span class="name"></span></strong></div>
+      <div>Weight: <strong><span class="weight"></span> pounds</strong></div>
+      <div><meter id="weightmeter" min="0" max="20" value="weight">
+        </meter></div>
+      <div>Happiness: <strong><span class="happiness"></span> tail wags (per min)</strong></div>
+      <div><meter id="happinessmeter" min="0" max="20" value="happinesst">
+        </meter></div>
+      <div>Power level: <strong><span class="power"></span></strong></div>
+      <div><meter id="powermeter" min="0" max="20" value="power">
+        </meter></div>
+      <div class="button-container">
+        <button class="treat-button">
+          Treat
+        </button>
+        <button class="play-button">
+          Play
+        </button>
+        <button class="exercise-button">
+          Exercise
+        </button>
+        <button class="evolve-button">
+          Evolve
+        </button>
+      </div>
+    </section>
+  </main>
+
+  <!-- Your web-app is https, so your scripts need to be too -->
+  <script src="https://code.jquery.com/jquery-2.2.1.min.js"
+    integrity="sha256-gvQgAFzTH6trSrAWoH1iPo9Xc96QxSZ3feW6kem+O00=" crossorigin="anonymous"></script>
+</body>
+
 </html>
