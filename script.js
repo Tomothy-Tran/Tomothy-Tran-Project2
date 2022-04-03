@@ -41,7 +41,7 @@ function clickedPlayButton() {
 }
 
 function clickedExerciseButton() {
-  alert(pet_info.name + "is tired from excercising!")
+  alert(pet_info.name + " is tired from excercising!")
   // Decrease pet happiness
   pet_info.happiness--;
   // Decrease pet weight
