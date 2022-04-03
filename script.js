@@ -28,6 +28,8 @@ function clickedTreatButton() {
   pet_info.happiness++;
   // Increase pet weight
   pet_info.weight++;
+  var eataudio = new Audio("audio/eat.mp3");
+  eataudio.play();
   checkAndUpdatePetInfoInHtml();
 }
 
@@ -37,6 +39,8 @@ function clickedPlayButton() {
   pet_info.happiness++;
   // Decrease pet weight
   pet_info.weight--;
+  var playaudio = new Audio("audio/chilling.mp3");
+  playaudio.play();
   checkAndUpdatePetInfoInHtml();
 }
 
@@ -52,7 +56,12 @@ function clickedExerciseButton() {
 }
 
 function clickedEvolveButton() {
-  document.getElementById("petimageid").src="images/Bob.webp";
+  alert(pet_info.name + " has evolved into Bob Ross!")
+  document.getElementById("petimageid").src = "images/Bob.webp";
+  var levelupaudio = new Audio("audio/levelup.mp3");
+  pet_info.name = "Bob Ross"
+  levelupaudio.play();
+  updatePetInfoInHtml();
 
 }
 
@@ -68,6 +77,11 @@ function checkWeightAndHappinessBeforeUpdating() {
 
   // also doing the same for happiness level
   if (pet_info.happiness <= 0) pet_info.happiness = 0;
+
+  // Add conditional so if values are greater than ten, set it back to ten
+  if (pet_info.weight >= 10) pet_info.weight = 10;
+  if (pet_info.happiness >= 10) pet_info.happiness = 10;
+  if (pet_info.power >= 10) pet_info.power = 10;
 }
 
 // Updates your HTML with the current values in your pet_info object
