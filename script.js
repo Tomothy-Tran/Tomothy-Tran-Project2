@@ -40,18 +40,20 @@ function clickedTreatButton() {
 }
 
 function clickedPlayButton() {
-  if(pet_info.weight != 0){
-  alert(pet_info.name + " is having fun playing with but his getting tired.")
-  // Increase pet happiness
-  pet_info.happiness++;
-  // Decrease pet weight
-  pet_info.weight--;
-  var playaudio = new Audio("audio/chilling.mp3");
-  playaudio.play();
-  checkAndUpdatePetInfoInHtml();
+  if (pet_info.weight != 0) {
+    alert(pet_info.name + " is having fun playing with but his getting tired.")
+    // Increase pet happiness
+    pet_info.happiness++;
+    // Decrease pet weight
+    pet_info.weight--;
+    var playaudio = new Audio("audio/chilling.mp3");
+    playaudio.play();
+    checkAndUpdatePetInfoInHtml();
   }
-  else{
+  else {
     alert(pet_info.name + " is too hungry to play!")
+    var stomachgrowlaudio = new Audio("audio/stomachgrowl.mp3");
+    stomachgrowlaudio.play();
     checkAndUpdatePetInfoInHtml();
   }
 }
@@ -65,10 +67,16 @@ function clickedExerciseButton() {
     pet_info.weight--;
     // Decrease pet energy
     pet_info.power++;
+    var gruntaudio = new Audio("audio/grunt.mp3");
+    gruntaudio.play();
+    var dumbellaudio = new Audio("audio/dumbell.mp3");
+    dumbellaudio.play();
     checkAndUpdatePetInfoInHtml();
   }
   else {
     alert(pet_info.name + " is too hungry to excercise!")
+    var stomachgrowlaudio = new Audio("audio/stomachgrowl.mp3");
+    stomachgrowlaudio.play();
     checkAndUpdatePetInfoInHtml();
   }
 }
