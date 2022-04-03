@@ -28,12 +28,19 @@ function clickedTreatButton() {
   pet_info.happiness++;
   // Increase pet weight
   pet_info.weight++;
-  var eataudio = new Audio("audio/eat.mp3");
-  eataudio.play();
+  if (document.getElementById("petimageid").src.indexOf("images/Hedgehog.web") != -1) {
+    var eataudio = new Audio("audio/eat.mp3");
+    eataudio.play();
+  }
+  else {
+    var eat2audio = new Audio("audio/eat2.mp3");
+    eat2audio.play();
+  }
   checkAndUpdatePetInfoInHtml();
 }
 
 function clickedPlayButton() {
+  if(pet_info.weight != 0){
   alert(pet_info.name + " is having fun playing with but his getting tired.")
   // Increase pet happiness
   pet_info.happiness++;
@@ -42,26 +49,46 @@ function clickedPlayButton() {
   var playaudio = new Audio("audio/chilling.mp3");
   playaudio.play();
   checkAndUpdatePetInfoInHtml();
+  }
+  else{
+    alert(pet_info.name + " is too hungry to play!")
+    checkAndUpdatePetInfoInHtml();
+  }
 }
 
 function clickedExerciseButton() {
-  alert(pet_info.name + " is tired from excercising!")
-  // Decrease pet happiness
-  pet_info.happiness--;
-  // Decrease pet weight
-  pet_info.weight--;
-  // Decrease pet energy
-  pet_info.power++;
-  checkAndUpdatePetInfoInHtml();
+  if (pet_info.weight != 0) {
+    alert(pet_info.name + " is tired from excercising!")
+    // Decrease pet happiness
+    pet_info.happiness--;
+    // Decrease pet weight
+    pet_info.weight--;
+    // Decrease pet energy
+    pet_info.power++;
+    checkAndUpdatePetInfoInHtml();
+  }
+  else {
+    alert(pet_info.name + " is too hungry to excercise!")
+    checkAndUpdatePetInfoInHtml();
+  }
 }
 
 function clickedEvolveButton() {
-  alert(pet_info.name + " has evolved into Bob Ross!")
-  document.getElementById("petimageid").src = "images/Bob.webp";
-  var levelupaudio = new Audio("audio/levelup.mp3");
-  pet_info.name = "Bob Ross"
-  levelupaudio.play();
-  updatePetInfoInHtml();
+  if (pet_info.happiness == 10 & pet_info.power == 10 & document.getElementById("petimageid").src.indexOf("images/Hedgehog.web") != -1) {
+    alert(pet_info.name + " has evolved into Bob Ross!")
+    document.getElementById("petimageid").src = "images/Bob.webp";
+    var levelupaudio = new Audio("audio/levelup.mp3");
+    pet_info.name = "Bob Ross"
+    levelupaudio.play();
+    updatePetInfoInHtml();
+  }
+  else if (document.getElementById("petimageid").src.indexOf("images/Bob.web") != -1) {
+    alert(pet_info.name + " cannot evolve any further!")
+  }
+  else {
+    alert(pet_info.name + " has not met the requirements to evolve!")
+    updatePetInfoInHtml();
+  }
 
 }
 
