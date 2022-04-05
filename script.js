@@ -18,7 +18,7 @@ $(function () { // Makes sure that your function is called once all the DOM elem
 var pet_info = {
   name: "Chia",
   weight: 0,
-  happiness: 5,
+  happiness: 0,
   power: 0
 };
 
@@ -28,6 +28,7 @@ function clickedTreatButton() {
   pet_info.happiness++;
   // Increase pet weight
   pet_info.weight++;
+  //Plays different audio based on whether pet has evolved or not by using the current image as a check
   if (document.getElementById("petimageid").src.indexOf("images/Hedgehog.web") != -1) {
     var eataudio = new Audio("audio/eat.mp3");
     eataudio.play();
@@ -50,6 +51,7 @@ function clickedPlayButton() {
     playaudio.play();
     checkAndUpdatePetInfoInHtml();
   }
+  //If pet is too hungry, alerts user and plays sound
   else {
     alert(pet_info.name + " is too hungry to play!")
     var stomachgrowlaudio = new Audio("audio/stomachgrowl.mp3");
@@ -73,6 +75,7 @@ function clickedExerciseButton() {
     dumbellaudio.play();
     checkAndUpdatePetInfoInHtml();
   }
+  //If pet is too hungry, alerts user and plays sound
   else {
     alert(pet_info.name + " is too hungry to excercise!")
     var stomachgrowlaudio = new Audio("audio/stomachgrowl.mp3");
@@ -82,10 +85,12 @@ function clickedExerciseButton() {
 }
 
 function clickedEvolveButton() {
-  if (pet_info.happiness == 10 & pet_info.power == 10 & document.getElementById("petimageid").src.indexOf("images/Hedgehog.web") != -1) {
+  //Checks conditions of pet can evolve and checks if pet has already evolved based on current image
+  if (pet_info.happiness == 5 & pet_info.power == 5 & document.getElementById("petimageid").src.indexOf("images/Hedgehog.web") != -1) {
     alert(pet_info.name + " has evolved into Bob Ross!")
     document.getElementById("petimageid").src = "images/Bob.webp";
     var levelupaudio = new Audio("audio/levelup.mp3");
+    //Change pet name to Bob Ross
     pet_info.name = "Bob Ross"
     levelupaudio.play();
     updatePetInfoInHtml();
@@ -113,10 +118,10 @@ function checkWeightAndHappinessBeforeUpdating() {
   // also doing the same for happiness level
   if (pet_info.happiness <= 0) pet_info.happiness = 0;
 
-  // Add conditional so if values are greater than ten, set it back to ten
-  if (pet_info.weight >= 10) pet_info.weight = 10;
-  if (pet_info.happiness >= 10) pet_info.happiness = 10;
-  if (pet_info.power >= 10) pet_info.power = 10;
+  // Add conditional so if values are greater than ten, set it back to 5
+  if (pet_info.weight >= 5) pet_info.weight = 5;
+  if (pet_info.happiness >= 5) pet_info.happiness = 5;
+  if (pet_info.power >= 5) pet_info.power = 5;
 }
 
 // Updates your HTML with the current values in your pet_info object
@@ -125,6 +130,7 @@ function updatePetInfoInHtml() {
   $('.weight').text(pet_info['weight']);
   $('.happiness').text(pet_info['happiness']);
   $('.power').text(pet_info['power']);
+  //Updated the meter bar
   var weightmetervalue = document.getElementById('weightmeter');
   weightmetervalue.value = pet_info.weight;
   var happinessmetervalue = document.getElementById('happinessmeter');
